@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMINA // Exhibition Archive — Fine Art & Masterpiece Photography</title>
+    <meta name="description" content="A luxury, editorial photography showcase and upload studio for master-tier photographs with lossless preservation and camera telemetry.">
+    
+    <!-- Tailwind CSS CDN with configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: {
+                            950: '#060608',
+                            900: '#0a0a0d',
+                            800: '#121217',
+                            700: '#1a1a22',
+                            600: '#252530'
+                        },
+                        gold: {
+                            300: '#f7e7a9',
+                            400: '#e5c358',
+                            500: '#d4af37',
+                            600: '#aa8c2c'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Italiana', 'Cinzel', 'serif'],
+                        display: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-obsidian-950 text-neutral-100 min-h-screen selection:bg-gold-500 selection:text-black relative overflow-x-hidden font-sans">
+
+    <!-- Ambient Glow FX -->
+    <div class="hero-glow-circle"></div>
+    <div class="fixed bottom-0 left-0 w-[500px] height-[500px] bg-radial from-amber-500/5 to-transparent pointer-events-none z-0"></div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-10 h-10 rounded-full border border-gold-500/40 bg-gold-500/10 flex items-center justify-center text-gold-400 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                    <i data-lucide="aperture" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <span class="font-display tracking-[0.25em] text-lg font-bold text-white block">L U M I N A</span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-gold-400/80 font-medium block">Exhibition Archive</span>
+                </div>
+            </div>
+
+            <!-- Center Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs tracking-widest uppercase text-neutral-400 font-medium">
+                <a href="#gallery-section" class="hover:text-gold-300 transition-colors">Archive</a>
+                <a href="#featured-section" class="hover:text-gold-300 transition-colors">Masterpieces</a>
+                <a href="#metrics-section" class="hover:text-gold-300 transition-colors">Telemetry</a>
+            </nav>
+
+            <!-- Actions: Upload Button & Layout Toggle -->
+            <div class="flex items-center gap-3">
+                <button id="btn-open-upload" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-semibold text-xs tracking-wider uppercase transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transform hover:-translate-y-0.5">
+                    <i data-lucide="upload" class="w-4 h-4"></i>
+                    <span>Upload Shot</span>
+                </button>
+
+                <button id="btn-export-backup" title="Export Portfolio Archive" class="p-2.5 rounded-full glass-pill text-neutral-400 hover:text-white transition-all">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10">
+
+        <!-- Hero Section: Curated Exhibition Spotlight -->
+        <section id="featured-section" class="relative pt-12 pb-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Left Typography -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-[11px] font-semibold tracking-widest uppercase">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-ping"></span>
+                            Fine Art Photography Vault
+                        </div>
+
+                        <h1 class="font-serif text-5xl sm:text-6xl xl:text-7xl leading-[1.08] tracking-tight font-light text-neutral-100">
+                            The Sanctum of <br>
+                            <span class="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 via-gold-300 to-amber-400">Pure Light.</span>
+                        </h1>
+
+                        <p class="text-neutral-400 text-sm sm:text-base leading-relaxed font-light max-w-lg">
+                            An architectural repository for exceptional, highly rated photographs. Upload your finest frames, preserve camera telemetry in lossless clarity, and showcase your vision with museum-grade elegance.
+                        </p>
+
+                        <!-- Call to actions -->
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <a href="#gallery-section" class="px-6 py-3 rounded-full bg-white text-obsidian-950 font-semibold text-xs tracking-widest uppercase hover:bg-gold-300 transition-all shadow-lg hover:shadow-white/20">
+                                Explore Archive
+                            </a>
+                            <button onclick="document.getElementById('btn-open-upload').click()" class="px-6 py-3 rounded-full border border-white/20 hover:border-gold-400/60 glass-pill text-neutral-200 hover:text-white font-medium text-xs tracking-widest uppercase transition-all">
+                                + Add Your Photo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hero Right: Featured Masterpiece Card -->
+                    <div class="lg:col-span-7">
+                        <div id="hero-featured-container" class="relative group rounded-2xl overflow-hidden border border-white/10 bg-obsidian-900 shadow-2xl shadow-black/80 aspect-[16/10] cursor-pointer">
+                            <img id="hero-featured-img" src="" alt="Featured Photograph" class="w-full h-full object-cover ken-burns-hero transition-transform duration-1000">
+                            
+                            <!-- Overlay Gradient & Data -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/40 to-transparent p-6 sm:p-8 flex flex-col justify-between">
+                                <div class="flex items-center justify-between">
+                                    <span id="hero-featured-badge" class="px-3 py-1 rounded-full bg-gold-500/20 border border-gold-500/50 text-gold-300 text-xs font-semibold tracking-wider uppercase backdrop-blur-md">
+                                        Grand Prize
+                                    </span>
+                                    <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 border border-white/10 backdrop-blur-md">
+                                        <i data-lucide="star" class="w-3.5 h-3.5 star-filled fill-amber-400 text-amber-400"></i>
+                                        <span id="hero-featured-rating" class="text-xs font-bold text-white">5.0</span>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-2 text-xs text-neutral-400 tracking-wider">
+                                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-400"></i>
+                                        <span id="hero-featured-location">Tre Cime di Lavaredo, Italy</span>
+                                    </div>
+                                    <h2 id="hero-featured-title" class="font-serif text-2xl sm:text-3xl font-light text-white group-hover:text-gold-300 transition-colors">
+                                        Echoes of the Dolomites
+                                    </h2>
+                                    
+                                    <!-- Camera Specs Ribbon -->
+                                    <div class="flex flex-wrap items-center gap-2 pt-1" id="hero-featured-telemetry">
+                                        <!-- Populated via JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Telemetry Metrics Strip -->
+        <section id="metrics-section" class="border-y border-white/5 bg-obsidian-900/60 backdrop-blur-md py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="space-y-1">
+                        <div id="stat-total-photos" class="font-serif text-3xl sm:text-4xl text-white font-light">0</div>
+                        <div class="text-[11px] uppercase tracking-widest text-neutral-400">Photographs in Vault</div>
+                    </div>
+                    <div class="space-y-1">
+                        <div id="stat-five-stars" class="font-serif text-3xl sm:text-4xl text-gold-400 font-light">0</div>
+                        <div class="text-[11px] uppercase tracking-widest text-neutral-400">5.0★ Masterpieces</div>
+                    </div>
+                    <div class="space-y-1">
+                        <div id="stat-avg-rating" class="font-serif text-3xl sm:text-4xl text-white font-light">4.9</div>
+                        <div class="text-[11px] uppercase tracking-widest text-neutral-400">Curated Quality Score</div>
+                    </div>
+                    <div class="space-y-1">
+                        <div id="stat-cameras" class="font-serif text-3xl sm:text-4xl text-amber-200 font-light">0</div>
+                        <div class="text-[11px] uppercase tracking-widest text-neutral-400">Camera Systems</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery-section" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Controls Header: Categories, Search, Layout Switcher -->
+                <div class="space-y-6 mb-12">
+                    
+                    <!-- Top Filter Row: Search & Layout Controls -->
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <!-- Search Box -->
+                        <div class="relative w-full md:w-80">
+                            <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+                            <input type="text" id="gallery-search" placeholder="Search title, camera, tag, location..." class="w-full pl-11 pr-4 py-2.5 rounded-full bg-obsidian-900 border border-white/10 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-gold-500/50 transition-all">
+                        </div>
+
+                        <!-- Sort & Rating Filter & Layout Switches -->
+                        <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+                            <!-- Rating Filter Dropdown -->
+                            <select id="filter-rating" class="px-4 py-2 rounded-full bg-obsidian-900 border border-white/10 text-xs text-neutral-300 focus:outline-none focus:border-gold-500/50">
+                                <option value="all">★ All Ratings</option>
+                                <option value="5">★ 5.0 Only</option>
+                                <option value="4.8">★ 4.8+ High Rated</option>
+                                <option value="favorites">♥ Favorites Only</option>
+                            </select>
+
+                            <!-- Sort Selector -->
+                            <select id="gallery-sort" class="px-4 py-2 rounded-full bg-obsidian-900 border border-white/10 text-xs text-neutral-300 focus:outline-none focus:border-gold-500/50">
+                                <option value="rating-desc">Highest Rated</option>
+                                <option value="newest">Newest Added</option>
+                                <option value="views-desc">Most Viewed</option>
+                                <option value="title-asc">Title (A-Z)</option>
+                            </select>
+
+                            <!-- Layout Switcher Buttons -->
+                            <div class="inline-flex rounded-full p-1 bg-obsidian-900 border border-white/10">
+                                <button id="btn-layout-masonry" class="p-1.5 rounded-full text-white bg-white/10 hover:text-white transition-all" title="Masonry View">
+                                    <i data-lucide="columns-3" class="w-4 h-4"></i>
+                                </button>
+                                <button id="btn-layout-editorial" class="p-1.5 rounded-full text-neutral-400 hover:text-white transition-all" title="Editorial 2-Column View">
+                                    <i data-lucide="grid-2x2" class="w-4 h-4"></i>
+                                </button>
+                                <button id="btn-layout-compact" class="p-1.5 rounded-full text-neutral-400 hover:text-white transition-all" title="Compact Geometric Grid">
+                                    <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Pills Horizontal Scroll -->
+                    <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="category-pills-container">
+                        <button data-category="all" class="category-pill glass-pill active px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap">
+                            All Works
+                        </button>
+                        <button data-category="landscape" class="category-pill glass-pill px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap">
+                            Landscape
+                        </button>
+                        <button data-category="portrait" class="category-pill glass-pill px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap">
+                            Portrait
+                        </button>
+                        <button data-category="street" class="category-pill glass-pill px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap">
+                            Street
+                        </button>
+                        <button data-category="astrophotography" class="category-pill glass-pill px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap">
+                            Astrophotography
+                        </button>
+                        <button data-category="architecture" class="category-pill glass-pill px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap">
+                            Architecture
+                        </button>
+                        <button data-category="wildlife" class="category-pill glass-pill px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap">
+                            Wildlife
+                        </button>
+                        <button data-category="fineart" class="category-pill glass-pill px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase transition-all whitespace-nowrap">
+                            Fine Art
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Gallery Viewport Container -->
+                <div id="gallery-container" class="view-masonry min-h-[400px]">
+                    <!-- Rendered dynamically by app.js -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="gallery-empty-state" class="hidden text-center py-24 space-y-4 border border-dashed border-white/10 rounded-2xl">
+                    <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mx-auto text-neutral-400">
+                        <i data-lucide="image-off" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white">No photographs match this criterion</h3>
+                    <p class="text-neutral-400 text-xs max-w-sm mx-auto">Try resetting filters, searching for a different camera model, or upload your next photograph.</p>
+                    <button onclick="document.getElementById('gallery-search').value=''; document.getElementById('filter-rating').value='all'; document.querySelector('[data-category=all]').click();" class="px-5 py-2 rounded-full border border-gold-500/40 text-gold-300 text-xs uppercase tracking-wider hover:bg-gold-500/10">
+                        Reset Filters
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Upload Studio Modal -->
+    <div id="upload-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300">
+        <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl glass-panel border border-white/15 bg-obsidian-900 shadow-2xl p-6 sm:p-8 space-y-6">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
+                        <i data-lucide="camera" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-serif text-xl sm:text-2xl text-white font-light">Upload Masterpiece</h2>
+                        <p class="text-xs text-neutral-400">Lossless storage with automatic EXIF extraction & rating assignment</p>
+                    </div>
+                </div>
+                <button id="btn-close-upload" class="p-2 rounded-full text-neutral-400 hover:text-white hover:bg-white/5 transition-all">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Upload Form -->
+            <form id="upload-form" class="space-y-6">
+                
+                <!-- Drag & Drop Zone -->
+                <div id="dropzone" class="dropzone-border rounded-xl p-8 text-center cursor-pointer relative group overflow-hidden">
+                    <input type="file" id="file-input" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-20">
+                    
+                    <div id="dropzone-prompt" class="space-y-3">
+                        <div class="w-14 h-14 rounded-full bg-white/5 group-hover:bg-gold-500/10 border border-white/10 group-hover:border-gold-500/30 flex items-center justify-center mx-auto text-neutral-400 group-hover:text-gold-400 transition-all">
+                            <i data-lucide="cloud-upload" class="w-7 h-7"></i>
+                        </div>
+                        <div class="text-sm font-medium text-white">Drag & drop your high-resolution photograph here</div>
+                        <p class="text-xs text-neutral-400">Supports JPEG, PNG, WEBP & AVIF (Retains original fidelity)</p>
+                    </div>
+
+                    <!-- Image Preview Box -->
+                    <div id="dropzone-preview-container" class="hidden relative rounded-lg overflow-hidden max-h-72 w-full flex items-center justify-center bg-black/40">
+                        <img id="dropzone-preview-img" src="" alt="Preview" class="max-h-72 w-auto object-contain rounded-lg">
+                        <div class="absolute bottom-2 right-2 px-3 py-1 rounded bg-black/70 backdrop-blur-md text-[11px] text-white" id="dropzone-file-info">
+                            <!-- Populated with filename and size -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto-EXIF Status Bar -->
+                <div id="exif-status-badge" class="hidden items-center justify-between px-4 py-2.5 rounded-lg bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs">
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-gold-400"></i>
+                        EXIF Telemetry successfully extracted from image headers!
+                    </span>
+                    <span class="text-[10px] uppercase text-neutral-400 font-mono">Lossless Metadata</span>
+                </div>
+
+                <!-- Form Fields: Title, Rating, Category -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    
+                    <!-- Title -->
+                    <div class="space-y-1.5 sm:col-span-2">
+                        <label class="text-xs uppercase tracking-wider text-neutral-400 font-medium">Photograph Title *</label>
+                        <input type="text" id="upload-title" required placeholder="e.g., Midnight Fog over Venice" class="w-full px-4 py-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-sm text-white focus:outline-none focus:border-gold-500/50">
+                    </div>
+
+                    <!-- Rating Picker -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs uppercase tracking-wider text-neutral-400 font-medium flex items-center justify-between">
+                            <span>Rating & Accolade *</span>
+                            <span id="rating-score-display" class="text-gold-400 font-bold">5.0 ★ (Masterpiece)</span>
+                        </label>
+                        <div class="flex items-center gap-2 py-1">
+                            <div id="star-rating-picker" class="flex items-center gap-1 cursor-pointer">
+                                <i data-lucide="star" data-index="1" class="w-6 h-6 star-filled fill-amber-400 text-amber-400 hover:scale-110 transition-transform"></i>
+                                <i data-lucide="star" data-index="2" class="w-6 h-6 star-filled fill-amber-400 text-amber-400 hover:scale-110 transition-transform"></i>
+                                <i data-lucide="star" data-index="3" class="w-6 h-6 star-filled fill-amber-400 text-amber-400 hover:scale-110 transition-transform"></i>
+                                <i data-lucide="star" data-index="4" class="w-6 h-6 star-filled fill-amber-400 text-amber-400 hover:scale-110 transition-transform"></i>
+                                <i data-lucide="star" data-index="5" class="w-6 h-6 star-filled fill-amber-400 text-amber-400 hover:scale-110 transition-transform"></i>
+                            </div>
+                            <input type="hidden" id="upload-rating" value="5.0">
+                        </div>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs uppercase tracking-wider text-neutral-400 font-medium">Genre / Category *</label>
+                        <select id="upload-category" class="w-full px-4 py-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-sm text-white focus:outline-none focus:border-gold-500/50">
+                            <option value="landscape">Landscape</option>
+                            <option value="portrait">Portrait</option>
+                            <option value="street">Street</option>
+                            <option value="astrophotography">Astrophotography</option>
+                            <option value="architecture">Architecture</option>
+                            <option value="wildlife">Wildlife</option>
+                            <option value="fineart">Fine Art</option>
+                        </select>
+                    </div>
+
+                    <!-- Award / Accolade Badge -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs uppercase tracking-wider text-neutral-400 font-medium">Accolade Badge</label>
+                        <input type="text" id="upload-badge" placeholder="e.g. Grand Prize, Editor's Choice" value="Masterpiece 2026" class="w-full px-4 py-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-sm text-white focus:outline-none focus:border-gold-500/50">
+                    </div>
+
+                    <!-- Location -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs uppercase tracking-wider text-neutral-400 font-medium">Location</label>
+                        <input type="text" id="upload-location" placeholder="e.g., Kyoto, Japan" class="w-full px-4 py-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-sm text-white focus:outline-none focus:border-gold-500/50">
+                    </div>
+
+                </div>
+
+                <!-- Camera Telemetry Section -->
+                <div class="border-t border-white/10 pt-4 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold flex items-center gap-1.5">
+                            <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+                            Camera Telemetry & Exposure
+                        </span>
+                        <span class="text-[10px] text-neutral-400">Auto-filled via EXIF or manual</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[11px] text-neutral-400">Camera Body</label>
+                            <input type="text" id="upload-camera" placeholder="e.g., Sony α7R V" class="w-full px-3 py-2 rounded bg-obsidian-950 border border-white/10 text-xs text-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] text-neutral-400">Lens</label>
+                            <input type="text" id="upload-lens" placeholder="e.g., 50mm f/1.2 GM" class="w-full px-3 py-2 rounded bg-obsidian-950 border border-white/10 text-xs text-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] text-neutral-400">Aperture</label>
+                            <input type="text" id="upload-aperture" placeholder="e.g., ƒ/1.4" class="w-full px-3 py-2 rounded bg-obsidian-950 border border-white/10 text-xs text-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] text-neutral-400">Shutter Speed</label>
+                            <input type="text" id="upload-shutter" placeholder="e.g., 1/500s" class="w-full px-3 py-2 rounded bg-obsidian-950 border border-white/10 text-xs text-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] text-neutral-400">ISO</label>
+                            <input type="text" id="upload-iso" placeholder="e.g., ISO 100" class="w-full px-3 py-2 rounded bg-obsidian-950 border border-white/10 text-xs text-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] text-neutral-400">Focal Length</label>
+                            <input type="text" id="upload-focal" placeholder="e.g., 35mm" class="w-full px-3 py-2 rounded bg-obsidian-950 border border-white/10 text-xs text-white">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story / Artistic Statement -->
+                <div class="space-y-1.5">
+                    <label class="text-xs uppercase tracking-wider text-neutral-400 font-medium">Artistic Narrative / Story Behind Shot</label>
+                    <textarea id="upload-description" rows="3" placeholder="Describe the lighting, environment, and artistic intention..." class="w-full px-4 py-2.5 rounded-lg bg-obsidian-950 border border-white/10 text-xs text-white focus:outline-none focus:border-gold-500/50 resize-none"></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-white/10">
+                    <button type="button" id="btn-cancel-upload" class="px-6 py-2.5 rounded-full border border-white/10 text-xs text-neutral-400 hover:text-white hover:bg-white/5 transition-all">
+                        Cancel
+                    </button>
+                    <button type="submit" id="btn-submit-upload" class="px-7 py-2.5 rounded-full bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-gold-500/30">
+                        Publish to Archive
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Exhibition Lightbox & Theater Mode Modal -->
+    <div id="lightbox-modal" class="lightbox-modal fixed inset-0 z-50 flex flex-col bg-obsidian-950/95 backdrop-blur-2xl">
+        
+        <!-- Lightbox Top Control Bar -->
+        <div class="h-16 px-6 flex items-center justify-between border-b border-white/10 glass-panel z-20">
+            <div class="flex items-center gap-4">
+                <button id="lightbox-close" class="p-2 rounded-full text-neutral-400 hover:text-white hover:bg-white/10 transition-all" title="Close (ESC)">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <div>
+                    <h3 id="lightbox-title" class="font-serif text-lg text-white font-normal truncate max-w-xs sm:max-w-md">Photograph Title</h3>
+                    <p id="lightbox-location-top" class="text-[11px] text-neutral-400 truncate">Location</p>
+                </div>
+            </div>
+
+            <!-- Lightbox Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Rating Display in Lightbox -->
+                <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-bold">
+                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                    <span id="lightbox-rating">5.0</span>
+                </div>
+
+                <!-- Zoom Controls -->
+                <div class="hidden sm:flex items-center rounded-full glass-pill p-1">
+                    <button id="lightbox-zoom-out" class="p-1.5 text-neutral-400 hover:text-white" title="Zoom Out">
+                        <i data-lucide="zoom-out" class="w-4 h-4"></i>
+                    </button>
+                    <span id="lightbox-zoom-level" class="text-[10px] font-mono px-2 text-neutral-300">100%</span>
+                    <button id="lightbox-zoom-in" class="p-1.5 text-neutral-400 hover:text-white" title="Zoom In (Z)">
+                        <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Favorite Toggle -->
+                <button id="lightbox-btn-fav" class="p-2 rounded-full glass-pill text-neutral-400 hover:text-rose-500 transition-all" title="Favorite (L)">
+                    <i data-lucide="heart" class="w-4 h-4"></i>
+                </button>
+
+                <!-- Fullscreen Toggle -->
+                <button id="lightbox-btn-fullscreen" class="p-2 rounded-full glass-pill text-neutral-400 hover:text-white transition-all" title="Toggle Fullscreen (F)">
+                    <i data-lucide="maximize" class="w-4 h-4"></i>
+                </button>
+
+                <!-- Download High-Res -->
+                <a id="lightbox-btn-download" href="#" download class="p-2 rounded-full glass-pill text-neutral-400 hover:text-white transition-all" title="Download High-Res">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                </a>
+
+                <!-- Info HUD Toggle -->
+                <button id="lightbox-btn-info" class="p-2 rounded-full glass-pill text-gold-400 hover:bg-gold-500/20 transition-all" title="Toggle Telemetry Drawer (I)">
+                    <i data-lucide="info" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lightbox Main Stage (Viewport + Side Drawer) -->
+        <div class="relative flex-1 flex overflow-hidden">
+            
+            <!-- Prev & Next Arrows -->
+            <button id="lightbox-prev" class="absolute left-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-black/50 hover:bg-black/80 text-white/80 hover:text-white border border-white/10 backdrop-blur-md transition-all" title="Previous (←)">
+                <i data-lucide="chevron-left" class="w-6 h-6"></i>
+            </button>
+            <button id="lightbox-next" class="absolute right-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-black/50 hover:bg-black/80 text-white/80 hover:text-white border border-white/10 backdrop-blur-md transition-all" title="Next (→)">
+                <i data-lucide="chevron-right" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Image Inspection Canvas -->
+            <div id="zoom-stage" class="zoom-container flex-1 flex items-center justify-center p-4">
+                <img id="lightbox-image" src="" alt="" class="zoom-image select-none rounded shadow-2xl object-contain">
+            </div>
+
+            <!-- EXIF Telemetry Side Drawer -->
+            <div id="lightbox-drawer" class="w-80 lg:w-96 border-l border-white/10 glass-panel p-6 overflow-y-auto space-y-6 transition-all duration-300">
+                
+                <!-- Accolade & Camera Header -->
+                <div class="space-y-2 border-b border-white/10 pb-4">
+                    <span id="drawer-badge" class="px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-[10px] font-bold tracking-widest uppercase">
+                        Masterpiece
+                    </span>
+                    <h4 id="drawer-camera-model" class="font-serif text-xl text-white font-medium">Hasselblad X2D 100C</h4>
+                    <p id="drawer-lens-model" class="text-xs text-neutral-400">XCD 38mm f/2.5 V</p>
+                </div>
+
+                <!-- Camera Exposure Dials Grid -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="p-3 rounded-xl bg-obsidian-900 border border-white/10 space-y-1">
+                        <span class="text-[10px] uppercase text-neutral-400 tracking-wider flex items-center gap-1">
+                            <i data-lucide="circle-dot" class="w-3 h-3 text-gold-400"></i> Aperture
+                        </span>
+                        <div id="drawer-aperture" class="text-base font-bold font-mono text-white">ƒ/2.8</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-obsidian-900 border border-white/10 space-y-1">
+                        <span class="text-[10px] uppercase text-neutral-400 tracking-wider flex items-center gap-1">
+                            <i data-lucide="timer" class="w-3 h-3 text-gold-400"></i> Shutter
+                        </span>
+                        <div id="drawer-shutter" class="text-base font-bold font-mono text-white">1/500s</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-obsidian-900 border border-white/10 space-y-1">
+                        <span class="text-[10px] uppercase text-neutral-400 tracking-wider flex items-center gap-1">
+                            <i data-lucide="sparkles" class="w-3 h-3 text-gold-400"></i> Sensitivity
+                        </span>
+                        <div id="drawer-iso" class="text-base font-bold font-mono text-white">ISO 100</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-obsidian-900 border border-white/10 space-y-1">
+                        <span class="text-[10px] uppercase text-neutral-400 tracking-wider flex items-center gap-1">
+                            <i data-lucide="focus" class="w-3 h-3 text-gold-400"></i> Focal Length
+                        </span>
+                        <div id="drawer-focal" class="text-base font-bold font-mono text-white">38mm</div>
+                    </div>
+                </div>
+
+                <!-- Simulated RGB Histogram -->
+                <div class="p-4 rounded-xl bg-obsidian-900 border border-white/10 space-y-2">
+                    <div class="flex items-center justify-between text-[11px] text-neutral-400">
+                        <span>Luminance & RGB Distribution</span>
+                        <span class="font-mono text-[10px] text-gold-400/80">14-BIT RAW</span>
+                    </div>
+                    <div class="h-16 flex items-end justify-between gap-[2px] pt-2" id="histogram-bars">
+                        <!-- Histogram dynamic simulation bars -->
+                    </div>
+                </div>
+
+                <!-- Narrative / Description -->
+                <div class="space-y-2">
+                    <label class="text-xs uppercase tracking-widest text-neutral-400 font-semibold">Photographer's Narrative</label>
+                    <p id="drawer-description" class="text-xs text-neutral-300 leading-relaxed font-light italic">
+                        "Captured during a fleeting three-minute break in dense alpine mist at sunrise."
+                    </p>
+                </div>
+
+                <!-- Location & Metadata -->
+                <div class="space-y-2 text-xs text-neutral-400 border-t border-white/10 pt-4">
+                    <div class="flex items-center justify-between">
+                        <span>Location:</span>
+                        <span id="drawer-location" class="text-neutral-200">Tre Cime di Lavaredo, Italy</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>Captured Date:</span>
+                        <span id="drawer-date" class="text-neutral-200">2026-06-14</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>Exhibition Views:</span>
+                        <span id="drawer-views" class="text-neutral-200">14,280</span>
+                    </div>
+                </div>
+
+                <!-- Delete Action -->
+                <div class="pt-4 border-t border-white/10">
+                    <button id="drawer-btn-delete" class="w-full py-2.5 rounded-lg border border-red-500/20 text-red-400 hover:bg-red-500/10 text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                        Remove from Archive
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-obsidian-950 py-12 text-neutral-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <i data-lucide="aperture" class="w-4 h-4 text-gold-400"></i>
+                <span class="tracking-widest uppercase font-display text-neutral-300">LUMINA ARCHIVE // 2026</span>
+            </div>
+            <p>Master-grade photographic preservation with browser-native IndexedDB engine.</p>
+            <div class="flex items-center gap-4">
+                <button id="footer-btn-reset" class="hover:text-gold-300 transition-colors">Reset Demo Gallery</button>
+                <span>•</span>
+                <a href="#gallery-section" class="hover:text-gold-300 transition-colors">Top of Archive ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Script Modules -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

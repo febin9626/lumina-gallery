@@ -1,0 +1,335 @@
+/* ===================================================================
+   LUMINA GALLERY - LUXURY EDITORIAL PHOTOGRAPHY PORTFOLIO
+   Design System, Motion FX, Glassmorphism, and Interactive Telemetry
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Italiana&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+
+:root {
+    --bg-base: #08080a;
+    --bg-surface: #101015;
+    --bg-surface-elevated: #181822;
+    --bg-surface-glass: rgba(16, 16, 21, 0.75);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(212, 175, 55, 0.35);
+    --gold-primary: #d4af37;
+    --gold-light: #f7e7a9;
+    --text-primary: #f5f5f7;
+    --text-secondary: #9e9ea7;
+    --text-muted: #5e5e6b;
+    --font-serif: 'Italiana', 'Cinzel', serif;
+    --font-display: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Custom High-End Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+    background: #272733;
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #3f3f50;
+}
+
+/* Typography Helpers */
+.font-serif {
+    font-family: var(--font-serif);
+}
+.font-display {
+    font-family: var(--font-display);
+}
+.font-sans {
+    font-family: var(--font-sans);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+    background: rgba(16, 16, 22, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-pill {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-pill:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.glass-pill.active {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.5);
+    color: #f7e7a9;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+/* Hero Ken Burns & Atmospheric Gradient */
+.hero-glow-circle {
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0) 70%);
+    top: -200px;
+    right: 5%;
+    pointer-events: none;
+    z-index: 0;
+    animation: pulseAmbient 10s ease-in-out infinite alternate;
+}
+
+@keyframes pulseAmbient {
+    0% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+    100% { transform: scale(1.15) translate(-30px, 30px); opacity: 0.9; }
+}
+
+.ken-burns-hero {
+    animation: kenBurnsZoom 24s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurnsZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08) translateY(-10px); }
+}
+
+/* Photo Card Styles & Layouts */
+.photo-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111116;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.photo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7),
+                0 0 30px -10px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+.photo-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(8, 8, 10, 0.95) 0%,
+        rgba(8, 8, 10, 0.5) 35%,
+        rgba(8, 8, 10, 0) 65%
+    );
+    opacity: 0.9;
+    transition: opacity 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+    pointer-events: none;
+}
+
+.photo-card:hover .photo-card-overlay {
+    opacity: 1;
+}
+
+/* Layout Views */
+/* 1. Masonry View */
+.view-masonry {
+    column-count: 3;
+    column-gap: 1.5rem;
+}
+@media (max-width: 1024px) {
+    .view-masonry { column-count: 2; }
+}
+@media (max-width: 640px) {
+    .view-masonry { column-count: 1; }
+}
+.view-masonry .photo-card {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+}
+
+/* 2. Editorial Large 2-Column View */
+.view-editorial {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+@media (max-width: 768px) {
+    .view-editorial { grid-template-columns: 1fr; }
+}
+.view-editorial .photo-card {
+    height: 520px;
+}
+
+/* 3. Minimalist Compact Grid */
+.view-compact {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+@media (max-width: 1200px) {
+    .view-compact { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+    .view-compact { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .view-compact { grid-template-columns: 1fr; }
+}
+.view-compact .photo-card {
+    aspect-ratio: 1 / 1;
+}
+
+/* Rating Stars Glow */
+.star-filled {
+    color: #eab308;
+    filter: drop-shadow(0 0 6px rgba(234, 179, 8, 0.4));
+}
+.star-empty {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Lightbox & Zoom Inspector */
+.lightbox-modal {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lightbox-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.zoom-container {
+    overflow: hidden;
+    cursor: zoom-in;
+    user-select: none;
+}
+.zoom-container.zoomed {
+    cursor: grab;
+}
+.zoom-container.zoomed:active {
+    cursor: grabbing;
+}
+
+.zoom-image {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center center;
+    max-height: 85vh;
+    max-width: 90vw;
+}
+
+/* Upload Dropzone Pulse */
+.dropzone-border {
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+.dropzone-border.drag-over {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.15) inset;
+}
+
+/* Keyframes for Stagger Fade In */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    pointer-events: none;
+}
+.toast-item {
+    pointer-events: auto;
+    animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Camera Telemetry Dial Pill */
+.telemetry-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #e4e4e7;
+}
+
+/* Simulated RGB Histogram */
+.histogram-bar {
+    width: 2px;
+    border-radius: 1px 1px 0 0;
+    transition: height 0.4s ease;
+}
