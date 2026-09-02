@@ -154,6 +154,14 @@ class LuminaApp {
             if (!stored || stored.length === 0) {
                 await luminaDB.addMultiple(INITIAL_PHOTOGRAPHS);
                 this.photos = [...INITIAL_PHOTOGRAPHS];
+            } else if (stored.length < INITIAL_PHOTOGRAPHS.length) {
+                const existingIds = new Set(stored.map(p => p.id));
+                const newPhotos = INITIAL_PHOTOGRAPHS.filter(p => !existingIds.has(p.id));
+                if (newPhotos.length > 0) {
+                    await luminaDB.addMultiple(newPhotos);
+                    stored = await luminaDB.getAll();
+                }
+                this.photos = stored;
             } else {
                 this.photos = stored;
             }
