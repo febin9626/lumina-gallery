@@ -78,9 +78,13 @@
                     <span>Upload Shot</span>
                 </button>
 
-                <button id="btn-export-backup" title="Export Portfolio Archive" class="p-2.5 rounded-full glass-pill text-neutral-400 hover:text-white transition-all">
+                <button id="btn-export-backup" title="Export Portfolio (Save to file)" class="p-2.5 rounded-full glass-pill text-neutral-400 hover:text-white transition-all">
                     <i data-lucide="download" class="w-4 h-4"></i>
                 </button>
+                <button id="btn-import-backup" title="Import Portfolio (Load on this device)" class="p-2.5 rounded-full glass-pill text-neutral-400 hover:text-white transition-all">
+                    <i data-lucide="folder-input" class="w-4 h-4"></i>
+                </button>
+                <input type="file" id="input-import-backup" accept=".json" class="hidden">
             </div>
         </div>
     </header>

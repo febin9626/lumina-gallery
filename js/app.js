@@ -143,6 +143,8 @@ class LuminaApp {
 
             // Miscellaneous
             btnExportBackup: document.getElementById('btn-export-backup'),
+            btnImportBackup: document.getElementById('btn-import-backup'),
+            inputImportBackup: document.getElementById('input-import-backup'),
             footerBtnReset: document.getElementById('footer-btn-reset'),
             toastContainer: document.getElementById('toast-container')
         };
@@ -235,8 +237,16 @@ class LuminaApp {
         // Global Keyboard Shortcuts
         document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
 
-        // Export Backup & Reset
+        // Export & Import Backup
         this.elements.btnExportBackup.addEventListener('click', () => this.exportBackupJSON());
+        this.elements.btnImportBackup.addEventListener('click', () => this.elements.inputImportBackup.click());
+        this.elements.inputImportBackup.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                this.importBackupJSON(file);
+                e.target.value = '';
+            }
+        });
         this.elements.footerBtnReset.addEventListener('click', () => this.resetDemoGallery());
     }
 
@@ -882,8 +892,32 @@ class LuminaApp {
         this.showToast('Backup Exported', 'Your entire photography archive has been exported to JSON.', 'gold');
     }
 
+    async importBackupJSON(file) {
+        try {
+            const text = await file.text();
+            const imported = JSON.parse(text);
+            if (!Array.isArray(imported)) {
+                alert('Invalid portfolio file format.');
+                return;
+            }
+            await luminaDB.addMultiple(imported);
+            this.photos = await luminaDB.getAll();
+            this.applyFiltersAndRender();
+            this.updateMetrics();
+            this.updateHeroFeatured();
+            this.showToast(
+                'Archive Synchronized!',
+                `Successfully imported and synced ${imported.length} photographs to this device.`,
+                'gold'
+            );
+        } catch (err) {
+            console.error('Failed to import portfolio:', err);
+            alert('Could not read portfolio file. Ensure it is a valid JSON export.');
+        }
+    }
+
     async resetDemoGallery() {
-        if (!confirm("Reset the archive to the original 8 curated masterpieces? Your custom uploads will be replaced.")) {
+        if (!confirm("Reset the archive to the 108 curated masterpieces? Your custom uploads will be replaced.")) {
             return;
         }
 
@@ -894,7 +928,7 @@ class LuminaApp {
         this.updateMetrics();
         this.updateHeroFeatured();
 
-        this.showToast('Vault Re-initialized', 'Curated master collection has been restored.', 'info');
+        this.showToast('Vault Re-initialized', 'Curated 108 master collection has been restored.', 'info');
     }
 
     initLucideIcons() {
