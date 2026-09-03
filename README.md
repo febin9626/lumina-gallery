@@ -4,7 +4,7 @@
 ### Fine Art Photography Exhibition & Telemetry Archive
 
 [![Live Exhibition](https://img.shields.io/badge/Live%20Exhibition-febin9626.github.io-gold?style=for-the-badge&logo=google-chrome&logoColor=black)](https://febin9626.github.io/lumina-gallery/)
-[![Photographs](https://img.shields.io/badge/Photographs-108%2B%20Curated-black?style=for-the-badge&logo=unsplash&logoColor=gold)](https://febin9626.github.io/lumina-gallery/)
+[![Photographs](https://img.shields.io/badge/Photographs-400%2B%20Curated-black?style=for-the-badge&logo=unsplash&logoColor=gold)](https://febin9626.github.io/lumina-gallery/)
 [![Storage](https://img.shields.io/badge/Storage-IndexedDB%20Local-10b981?style=for-the-badge&logo=safari&logoColor=white)](https://febin9626.github.io/lumina-gallery/)
 [![License](https://img.shields.io/badge/License-MIT-neutral?style=for-the-badge)](LICENSE)
 
@@ -31,8 +31,8 @@ Every photograph is paired with complete camera telemetry—capturing camera mak
 * **14-Bit RAW Histogram**: Simulated real-time RGB histogram breakdown for tonal distribution analysis.
 * **Telemetry HUD**: Detailed slide-out metadata drawer displaying shooting coordinates, timestamps, and equipment profiles.
 
-### 📸 Curated 108 Masterpiece Archive
-Pre-seeded with 108 award-winning photographs spanning 7 photographic disciplines:
+### 📸 Curated 400+ Masterpiece Archive
+Pre-seeded with 408 award-winning photographs spanning 7 photographic disciplines:
 * 🏔️ **Landscape** (Dolomites, Geirangerfjord, Patagonia, Redwood mists)
 * 🏮 **Street & Documentary** (Tokyo neon, Kyoto rain, Broadway canyons, Parisian bistros)
 * 👤 **Fine Art Portraiture** (Studio chiaroscuro, artisan character studies, natural light)

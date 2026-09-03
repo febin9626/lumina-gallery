@@ -917,7 +917,7 @@ class LuminaApp {
     }
 
     async resetDemoGallery() {
-        if (!confirm("Reset the archive to the 108 curated masterpieces? Your custom uploads will be replaced.")) {
+        if (!confirm("Reset the archive to the 408 curated masterpieces? Your custom uploads will be replaced.")) {
             return;
         }
 
@@ -928,7 +928,7 @@ class LuminaApp {
         this.updateMetrics();
         this.updateHeroFeatured();
 
-        this.showToast('Vault Re-initialized', 'Curated 108 master collection has been restored.', 'info');
+        this.showToast('Vault Re-initialized', 'Curated 408 master collection has been restored.', 'info');
     }
 
     initLucideIcons() {
